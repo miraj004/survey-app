@@ -1,0 +1,50 @@
+- Necessary tools: wamp, composer, editor, node.js
+- Laravel Project Setup
+	-Create MySQL Database
+	-Run migration
+	-Start artian server
+- Create React Project
+	-Run on port 3000
+- Cleanup React Project
+- Add and configure Tailwind.css
+- Install HeroIcons
+- Create Tailwind.css login form
+- Install and configure react router
+	-Configure 4 routes: /dashboard, /surveys, /login, /register
+- Create GuestLayout
+- Create DefaultLayout
+- Create ContextProvider and use context data in DefaultLayout
+- Make /dashboard and /surveys protected routes
+- Render Suveys list page
+	-Create surveys dummy data in ContextProvider
+	-Understand the survey data structure
+	-Create TButton component
+	-Create Survey List Item component
+- Create Survey form
+	-Survey fields: image, tite, description, expire_date, active
+=================================================================================
+- Install and configure axios
+- Implement Register
+- Implement Login
+- Implement survey creation
+	-Create SurveyController with resources and request
+- Create SurveyQuestions react component
+- Create QuestionEditor component
+- Implement saving questions on API side
+- Implement displaying surveys from database instead of dummy suveys
+- Implement pagination
+- Implement Survey Update
+- Implement Survey Delete
+- Show loading indicator on survey open
+- Show success notification on survey create, update, and delete
+==================================================================================
+- create survey public page
+- Implement get Survey by slug
+- Display questions on public page
+- Implement saving answers
+- Implement Dashboard
+- Deploy Laravel
+- Deploy React
+
+
+
