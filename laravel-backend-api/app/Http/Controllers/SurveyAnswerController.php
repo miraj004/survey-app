@@ -8,6 +8,7 @@ use App\Models\SurveyQuestionAnswer;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 
 class SurveyAnswerController extends Controller
 {
@@ -16,12 +17,10 @@ class SurveyAnswerController extends Controller
     {
         $survey->load(['survey_questions' => function ($query) {
             $query->with('survey_question_answers');
-        }, 'survey_answers' => function ($query){
+        }, 'survey_answers' => function ($query) {
             $query->latest()->first();
         }]);
-
-//        $survey->load('survey_questions.survey_question_answers', 'survey_answers');
-
+        $survey->thumbnail_url = URL::to($survey->thumbnail_url);
         return response()->json($survey);
     }
 
@@ -51,10 +50,16 @@ class SurveyAnswerController extends Controller
             }
 
             foreach ($attributes['answers'] as $attribute) {
+                if (is_array($attribute['answer'])) {
+                    sort($attribute['answer']);
+                    $answer = json_encode($attribute['answer']);
+                } else {
+                    $answer = $attribute['answer'];
+                }
                 $data = [
-                   'survey_question_id' => $attribute['question_id'],
-                   'survey_answer_id' => $survey_answer->id,
-                   'answer' => is_array($attribute['answer']) ? json_encode($attribute['answer']):$attribute['answer']
+                    'survey_question_id' => $attribute['question_id'],
+                    'survey_answer_id' => $survey_answer->id,
+                    'answer' => $answer,
                 ];
                 SurveyQuestionAnswer::create($data);
             }

@@ -43,9 +43,10 @@ export default function Surveys() {
     const handleCreate = () => {
         navigate('/surveys/create')
     }
+
     return (
         <Page title={'Surveys'} createButton={
-            <Button id={'create-button'} type={'button'} color={'gray'} onClick={handleCreate}>
+            <Button id={'create-button'} type={'button'} gradientDuoTone="purpleToBlue" onClick={handleCreate}>
               <span className="flex items-center">
                    <PlusIcon className="h-5 w-5 mr-2"/>
                    <span>Create New</span>
